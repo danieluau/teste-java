@@ -1,11 +1,10 @@
-package Classes.java;
+package classesetc;
 
 public class Funcionario {
     private String nome;
     private String funcao;
 
     public Funcionario(String funcionario) {
-
     }
 
     public String getNome() {

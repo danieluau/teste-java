@@ -1,28 +1,29 @@
 package org.example;
 
+import classesetc.Servicos;
+import daos.ServicoDAO;
+import daos.ServicosDAO;
+
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 public class Main {
 
     public static void main(String[] args) {
-         try {
-             Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ifbeauty",
-                     "postgres", "02082001@UaU");
-             if (conexao != null) {
-                 System.out.println("Banco de dados conectado com sucesso!");
-                 Statement stm = conexao.createStatement();
-                 consulta(stm);
-             } else {
-                 System.out.println("Conexão falhou!");
-             }
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
+
+        ServicosDAO dao = new ServicoDAO();
+
+        Servicos servicos = new Servicos();
+        servicos.setNome("Sla");
+        servicos.setDescricao("tanto faz");
+        servicos.setValor(150.0);
+
+        dao.inserir(servicos);
+        consulta
      }
 
-     static void consulta(Statement stm) {
-         String sql = "select * from cliente";
+     static void consulta() {
+         String sql = "select * from servicos";
          try {
              ResultSet result = stm.executeQuery(sql);
              while (result.next()) {
@@ -32,4 +33,7 @@ public class Main {
              e.printStackTrace();
          }
     }
+
+
+
 }

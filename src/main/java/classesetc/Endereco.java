@@ -1,4 +1,4 @@
-package Classes.java;
+package classesetc;
 
 public class Endereco {
     private String logradouro;
