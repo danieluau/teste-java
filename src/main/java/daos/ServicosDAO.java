@@ -11,7 +11,7 @@ public interface ServicosDAO {
     Servicos atualizar(Servicos servicos);
 
     void apagar (long id);
-    List<Servicos> findALL();
-    Optional<Servicos> findById(long id);
+    List<Servicos> listarTudo();
+    Optional<Servicos> listarPorID(long id);
 
 }

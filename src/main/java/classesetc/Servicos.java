@@ -2,7 +2,7 @@ package classesetc;
 
 
 import java.time.LocalDate;
-
+import java.util.List;
 
 
 public class Servicos {
@@ -12,16 +12,13 @@ public class Servicos {
     private double valor;
 
 
-    public Servicos(long id, String nome, String descricao, double valor, LocalDate servico ,Funcionario funcionario) {
+    public Servicos(long id, String nome, String descricao, double valor) {
         this.id = id;
         this.descricao = descricao;
         this.nome = nome;
         this.valor = valor;
     }
 
-    public Servicos() {
-
-    }
 
     public String getNome() {
         return nome;
@@ -44,7 +41,6 @@ public class Servicos {
     public void setValor(double valor) {
         this.valor = valor;
     }
-
     public long getId() {
         return id;
     }
