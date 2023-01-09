@@ -79,6 +79,31 @@ public class ServicoDAO implements ServicosDAO{
 
     @Override
     public Optional<Servicos> listarPorID(long id) {
-        return Optional.empty();
+        String sql = "select id_servico, nome, descricao, valor from servico where id_servico = ?";
+
+        Servicos servicos = null;
+        try (Connection connection = ConnectionFactory.getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, id);
+
+            ResultSet result = preparedStatement.executeQuery();
+            while(result.next()){
+                long pk = result.getLong("id_servico");
+                String nome = result.getString("nome");
+                String descricao = result.getString("descricao");
+                double valor = result.getDouble("valor");
+
+                servicos = new Servicos(pk, nome, descricao, valor);
+
+
+            }
+
+        }
+        catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+
+
+        return Optional.ofNullable(servicos);
     }
 }

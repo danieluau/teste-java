@@ -5,24 +5,24 @@ import daos.ServicoDAO;
 
 
 import java.util.List;
+import java.util.Optional;
 
 public class App {
 
     public static void main(String[] args) {
 
         ServicoDAO dao = new ServicoDAO();
-        List<Servicos> servico = dao.listarTudo();
-
-        for(Servicos servicos : servico) {
+        Optional<Servicos> servicosOptional = dao.listarPorID(2);
+        servicosOptional.ifPresent(servicos -> {
             System.out.println("ID: " + servicos.getId());
             System.out.println("NOME: " + servicos.getNome());
             System.out.println("DESCRICAO: " + servicos.getDescricao());
             System.out.println("Valor: " + servicos.getValor());
-            System.out.println ("============================================================");
-        }
-     }
+            System.out.println("============================================================");
+        });
 
-    /*public static void main(String[] args) {
+
+    /*public static void inserir(String[] args) {
 
         ServicosDAO dao = new ServicoDAO();
 
@@ -38,8 +38,7 @@ public class App {
     */
 
 
-    /*public static void main(String[] args) {
-sdasdsasdsds
+    /*public static void listartodos(String[] args) {
         ServicoDAO dao = new ServicoDAO();
         List<Servicos> servico = dao.listarTudo();
 
@@ -52,7 +51,18 @@ sdasdsasdsds
         }
     } */
 
+        /*public static void main(String[] args) {
 
+            ServicoDAO dao = new ServicoDAO();
+            Optional<Servicos> servicosOptional = dao.listarPorID(2);
+            servicosOptional.ifPresent(servicos -> {
+                System.out.println("ID: " + servicos.getId());
+                System.out.println("NOME: " + servicos.getNome());
+                System.out.println("DESCRICAO: " + servicos.getDescricao());
+                System.out.println("Valor: " + servicos.getValor());
+                System.out.println("============================================================");
+            });
+        */
 
-
+    }
 }
