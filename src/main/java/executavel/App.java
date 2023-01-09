@@ -10,30 +10,14 @@ import java.util.Optional;
 public class App {
 
     public static void main(String[] args) {
-
         ServicoDAO dao = new ServicoDAO();
-        Optional<Servicos> servicosOptional = dao.listarPorID(2);
 
-        Servicos servicos = servicosOptional.get();
-
-        System.out.println("ID: " + servicos.getId());
-        System.out.println("NOME: " + servicos.getNome());
-        System.out.println("DESCRICAO: " + servicos.getDescricao());
-        System.out.println("Valor: " + servicos.getValor());
-        System.out.println("============================================================");
-
-
-        servicos.setNome("Progressiva");
-        servicos.setDescricao("Não sei o que faz");
-        servicos.setValor(120);
-
-        dao.atualizar(servicos);
     };
 
 
     /*public static void inserir(String[] args) {
 
-        ServicosDAO dao = new ServicoDAO();
+        ServicosDAO dao = new ServicoDAO();  //falta criar um menu pra todes as classes e funcoes etc
 
         Servicos servicos = new Servicos();
         servicos.setNome("Sla");
@@ -47,7 +31,7 @@ public class App {
     */
 
 
-    /*public static void listartodos(String[] args) {
+    /*public static void listarTodos(String[] args) {
         ServicoDAO dao = new ServicoDAO();
         List<Servicos> servico = dao.listarTudo();
 
@@ -60,7 +44,7 @@ public class App {
         }
     } */
 
-        /*public static void main(String[] args) {
+        /*public static void listarPorID(String[] args) {
 
             ServicoDAO dao = new ServicoDAO();
             Optional<Servicos> servicosOptional = dao.listarPorID(2);
@@ -93,7 +77,13 @@ public class App {
 
         dao.atualizar(servicos);
     };
-    */
 
+    public static void main(String[] args) {
+
+        ServicoDAO dao = new ServicoDAO();
+        dao.apagar(7);  //aqui tu coloca o id do que tu quer apagar
+
+    };
+*/
 
     }

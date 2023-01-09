@@ -19,6 +19,10 @@ public class Servicos {
         this.valor = valor;
     }
 
+    public Servicos() {
+
+    }
+
 
     public String getNome() {
         return nome;

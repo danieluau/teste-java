@@ -14,7 +14,7 @@ public class ServicoDAO implements ServicosDAO{
     public Servicos inserir(Servicos servicos) {
 
         try (Connection connection =  ConnectionFactory.getConnection()){
-            String sql = ("insert into servico (nome, descricao, valor) values (?, ?, ?)");
+            String sql = ("INSERT into servico (nome, descricao, valor) VALUES (?, ?, ?)");
 
             PreparedStatement prepareStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             prepareStatement.setString(1, servicos.getNome());
@@ -38,7 +38,7 @@ public class ServicoDAO implements ServicosDAO{
     @Override
     public Servicos atualizar(Servicos servicos) {
         try (Connection connection =  ConnectionFactory.getConnection()){
-            String sql = ("update servico set nome = ?, descricao= ?, valor= ? where id_servico = ?");
+            String sql = ("UPDATE servico set nome = ?, descricao= ?, valor= ? WHERE id_servico = ?");
 
             PreparedStatement prepareStatement = connection.prepareStatement(sql);
             prepareStatement.setString(1, servicos.getNome());
@@ -57,12 +57,25 @@ public class ServicoDAO implements ServicosDAO{
     @Override
     public void apagar(long id) {
 
+        try (Connection connection =  ConnectionFactory.getConnection()){
+            String sql = ("DELETE FROM servico WHERE id_servico = ?");
+
+            PreparedStatement prepareStatement = connection.prepareStatement(sql);
+            prepareStatement.setLong(1, id);
+
+
+            prepareStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
     }
 
     @Override
     public List<Servicos> listarTudo() {
 
-        String sql = "select id_servico, nome, descricao, valor from servico";
+        String sql = "SELECT id_servico, nome, descricao, valor FROM servico";
 
         List<Servicos> servico = new ArrayList<>();
 
@@ -93,7 +106,7 @@ public class ServicoDAO implements ServicosDAO{
 
     @Override
     public Optional<Servicos> listarPorID(long id) {
-        String sql = "select id_servico, nome, descricao, valor from servico where id_servico = ?";
+        String sql = "SELECT id_servico, nome, descricao, valor FROM servico WHERE id_servico = ?";
 
         Servicos servicos = null;
         try (Connection connection = ConnectionFactory.getConnection()){
