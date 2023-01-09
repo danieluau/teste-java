@@ -6,7 +6,7 @@ import daos.ServicoDAO;
 
 import java.util.List;
 
-public class Main {
+public class App {
 
     public static void main(String[] args) {
 
