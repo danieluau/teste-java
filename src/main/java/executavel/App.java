@@ -13,13 +13,22 @@ public class App {
 
         ServicoDAO dao = new ServicoDAO();
         Optional<Servicos> servicosOptional = dao.listarPorID(2);
-        servicosOptional.ifPresent(servicos -> {
-            System.out.println("ID: " + servicos.getId());
-            System.out.println("NOME: " + servicos.getNome());
-            System.out.println("DESCRICAO: " + servicos.getDescricao());
-            System.out.println("Valor: " + servicos.getValor());
-            System.out.println("============================================================");
-        });
+
+        Servicos servicos = servicosOptional.get();
+
+        System.out.println("ID: " + servicos.getId());
+        System.out.println("NOME: " + servicos.getNome());
+        System.out.println("DESCRICAO: " + servicos.getDescricao());
+        System.out.println("Valor: " + servicos.getValor());
+        System.out.println("============================================================");
+
+
+        servicos.setNome("Progressiva");
+        servicos.setDescricao("Não sei o que faz");
+        servicos.setValor(120);
+
+        dao.atualizar(servicos);
+    };
 
 
     /*public static void inserir(String[] args) {
@@ -64,5 +73,27 @@ public class App {
             });
         */
 
+    /*public static void atualizar(String[] args) {
+
+        ServicoDAO dao = new ServicoDAO();
+        Optional<Servicos> servicosOptional = dao.listarPorID(2);
+
+        Servicos servicos = servicosOptional.get();
+
+        System.out.println("ID: " + servicos.getId());
+        System.out.println("NOME: " + servicos.getNome());
+        System.out.println("DESCRICAO: " + servicos.getDescricao());
+        System.out.println("Valor: " + servicos.getValor());
+        System.out.println("============================================================");
+
+
+        servicos.setNome("Progressiva");
+        servicos.setDescricao("Não sei o que faz");
+        servicos.setValor(120);
+
+        dao.atualizar(servicos);
+    };
+    */
+
+
     }
-}

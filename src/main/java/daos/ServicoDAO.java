@@ -37,7 +37,21 @@ public class ServicoDAO implements ServicosDAO{
 
     @Override
     public Servicos atualizar(Servicos servicos) {
-        return null;
+        try (Connection connection =  ConnectionFactory.getConnection()){
+            String sql = ("update servico set nome = ?, descricao= ?, valor= ? where id_servico = ?");
+
+            PreparedStatement prepareStatement = connection.prepareStatement(sql);
+            prepareStatement.setString(1, servicos.getNome());
+            prepareStatement.setString(2, servicos.getDescricao());
+            prepareStatement.setDouble(3, servicos.getValor());
+            prepareStatement.setLong(4, servicos.getId());
+
+            prepareStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return servicos;
     }
 
     @Override
